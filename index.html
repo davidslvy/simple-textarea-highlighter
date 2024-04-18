@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea con Resaltado Simple</title>
+    <link href="simpleHighlightTextarea.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Plugin de Resaltado de Texto en Textarea</h1>
+    <h3>Los caracteres rodeados por * se mostrarán en color rojo, mientras que los rodeados por % se mostrarán en verde.</h3>
+    <div contenteditable="true" 
+         class="highlight_textarea" 
+         placeholder="Ingrese el texto aquí" 
+         highlightChars='{"*":"red", "%":"#00FF00"}'>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="simpleHighlightTextarea.js"></script>
+<script>
+$(".highlight_textarea").on('input', function() {
+    let highlightChars = $.parseJSON($(this).attr("highlightChars"));
+    textareaColorizeFunc(this, highlightChars);
+});
+</script>
+</body>
+</html>
